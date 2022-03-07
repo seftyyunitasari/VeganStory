@@ -7,7 +7,7 @@ A web application designed to sell 100% vegan products.
 * Rails 7.0.2.2
 
 ## Implemented Employment Technologies
-* Review function
+* Comment function
 * Favourite function
 
 ## Implemented Technology outside The Curriculum
