@@ -29,4 +29,7 @@ rails s
 ### Wireframes
 [Wireframes Share Link](https://balsamiq.cloud/s3gmnni/psml4zk)
 ### ER Diagram
+![ER Diagram](ERD.png)
+
 ### Screen Transition Diagram
+![Screen Transition Diagram](ScreenTransitionDiagram.png)
