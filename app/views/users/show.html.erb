@@ -1,3 +1,4 @@
 <h3>Profile page</h3>
 <p>Name: <%= @user.name %></p>
 <p>Email: <%= @user.email %></p>
+<%= link_to "edit account", edit_user_path(@user.id) %>
