@@ -19,6 +19,8 @@
       <%= link_to "Log in", new_session_path %>
     <% end %>
 
+    <%= link_to "Products", products_path %>
+
     <% flash.each do |type, message| %>
         <%= content_tag(:div, message, class:"#{type}") %>
     <% end %>
