@@ -7,3 +7,9 @@
 <p>Description:  <%= @product.description %></p>
 <%= link_to "Edit Product", edit_product_path(@product.id) %>
 <%= button_to "Delete Product", product_path(@product.id), method: :delete %>
+
+<% if @favourite.present? %>
+    <%= button_to "Remove from favourite", favourite_path(id: @favourite.id), method: :delete %>
+<% else %>
+    <%= button_to "Add to favourite", favourites_path(product_id: @product.id), method: :post %>
+<% end %>

@@ -6,4 +6,7 @@ class Product < ApplicationRecord
   validates :stock, presence: true
 
   belongs_to :category
+  has_many :favourites, dependent: :destroy
+  has_many :favourite_products, through: :favourites, source: :product
+  
 end

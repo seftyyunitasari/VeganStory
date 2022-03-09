@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
 
     def show
         @product = Product.find(params[:id])
+        @favourite = current_user.favourites.find_by(product_id: @product.id)
     end
 
     def index
