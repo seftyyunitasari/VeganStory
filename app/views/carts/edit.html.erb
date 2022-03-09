@@ -1,0 +1,5 @@
+<%= form_with(model: @cart, local: true) do |f| %>
+    <%= f.label :quantity %>
+    <%= f.text_field :quantity %>
+    <%= f.submit "edit cart" %>
+<% end %>

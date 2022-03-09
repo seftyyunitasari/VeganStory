@@ -3,6 +3,7 @@ class FavouritesController < ApplicationController
 
 	def create
 		favourite = current_user.favourites.create(product_id: params[:product_id])
+        redirect_to favourites_path
 	end
 
 	def destroy

@@ -1,0 +1,10 @@
+<h3>Cart</h3>
+<% @carts.each do |cart| %>
+    <% product = Product.find(cart.product_id) %>
+    <p><%= link_to image_tag(product.image.url), product_path(product.id) %></p>
+    <p>Name: <%= product.name %></p>
+    <p>Quantity: <%= cart.quantity %></p>
+    <p>Subtotal: <%= cart.subtotal %></p>
+    <%= link_to "Edit quantity", edit_cart_path(cart.id) %>
+    <%= button_to "Remove from cart", cart_path(id: cart.id), method: :delete %>
+<% end %>
