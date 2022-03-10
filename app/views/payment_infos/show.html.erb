@@ -1,0 +1,7 @@
+<h3>Payment information</h3>
+<p><%= @payment_info %></p>
+<p>Card holder: <%= @payment_info.card_holder %></p>
+<p>Card number: <%= @payment_info.card_number %></p>
+<p>Expiration date: <%= @payment_info.expiration_date %></p>
+<%= link_to "Edit payment information", edit_payment_info_path(@payment_info.id) %>
+<%= button_to "Delete payment information", payment_info_path(@payment_info.id), method: :delete %>

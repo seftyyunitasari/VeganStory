@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
+        @payment_info = PaymentInfo.find_by(user_id: current_user.id)
     end
 
     def edit

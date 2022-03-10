@@ -5,5 +5,10 @@
 <p>Phone: <%= @user.phone %>
 <br/>
 <%= link_to "edit account", edit_user_path(@user.id) %>
+<% if @payment_info.present? %>
+    <%= link_to "see payment information", payment_info_path(@payment_info.id) %>
+<% else %>
+    <%= link_to "add paymet information", new_payment_info_path %>
+<% end %>
 <%= link_to "favourite list", favourites_path %>
 <%= link_to "Cart", carts_path %>
