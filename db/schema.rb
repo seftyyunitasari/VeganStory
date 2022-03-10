@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_09_145434) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_10_154650) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,29 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_09_145434) do
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_favourites_on_product_id"
     t.index ["user_id"], name: "index_favourites_on_user_id"
+  end
+
+  create_table "order_details", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "order_id", null: false
+    t.integer "quantity"
+    t.integer "subtotal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_details_on_order_id"
+    t.index ["product_id"], name: "index_order_details_on_product_id"
+    t.index ["user_id"], name: "index_order_details_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "total"
+    t.text "shipping_address"
+    t.string "card_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "payment_infos", force: :cascade do |t|
@@ -78,6 +101,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_09_145434) do
   add_foreign_key "carts", "users"
   add_foreign_key "favourites", "products"
   add_foreign_key "favourites", "users"
+  add_foreign_key "order_details", "orders"
+  add_foreign_key "order_details", "products"
+  add_foreign_key "order_details", "users"
+  add_foreign_key "orders", "users"
   add_foreign_key "payment_infos", "users"
   add_foreign_key "products", "categories"
 end
