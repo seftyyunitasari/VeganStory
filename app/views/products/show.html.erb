@@ -5,8 +5,6 @@
 <p>Price: <%= @product.price %></p>
 <p>Stock: <%= @product.stock %></p>
 <p>Description:  <%= @product.description %></p>
-<%= link_to "Edit Product", edit_product_path(@product.id) %>
-<%= button_to "Delete Product", product_path(@product.id), method: :delete %>
 
 <% if @favourite.present? %>
     <%= button_to "Remove from favourite", favourite_path(id: @favourite.id), method: :delete %>

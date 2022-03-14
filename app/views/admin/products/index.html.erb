@@ -1,0 +1,10 @@
+<h3>Hi this is the products index from admin controller </h3>
+<%= link_to "Add product", new_admin_product_path %>
+<% @product.each do |product| %>
+    <p><%= link_to image_tag(product.image.url), admin_product_path(product.id) %></p>
+    <p>Name: <%= product.name %></p>
+    <p>Category: <%= product.category.name %></p>
+    <p>Price: <%= product.price %></p>
+    <p>Stock: <%= product.stock %></p>
+    <p>Description:  <%= product.description %></p>
+<% end %>
