@@ -8,3 +8,5 @@
     <%= link_to "Edit quantity", edit_cart_path(cart.id) %>
     <%= button_to "Remove from cart", cart_path(id: cart.id), method: :delete %>
 <% end %>
+
+<%= button_to "Checkout", orders_path, method: :post unless Cart.count == 0 %>

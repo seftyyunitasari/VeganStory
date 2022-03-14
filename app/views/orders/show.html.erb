@@ -1,0 +1,6 @@
+<h3>Checkout Page</h3>
+<p> Shipping adress: <%= @order.shipping_address %> </p>
+<p> Payment Information: <%= @order.card_number %> </p>
+<p> Total: <%= @order.total %> </p>
+<%= link_to "edit order", edit_order_path(@order.id) %>
+<%= link_to "place oder", complete_order_path(@order.id) %>

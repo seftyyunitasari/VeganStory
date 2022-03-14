@@ -1,0 +1,7 @@
+<%= form_with(model: @order, local: true) do |f| %>
+    <%= f.label :shipping_address %>
+    <%= f.text_area :shipping_address %>
+    <%= f.label :card_number %>
+    <%= f.text_field :card_number %>
+    <%= f.submit "submit" %>
+<% end %>
