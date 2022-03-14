@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   # GET /comments or /comments.json
   def index
-    @comments = Comment.all
+    @comments = Comment.order(created_at: :desc)
   end
 
   # GET /comments/1 or /comments/1.json
@@ -27,7 +27,8 @@ class CommentsController < ApplicationController
       if @comment.save
         format.turbo_stream do
           render turbo_stream: [
-            turbo_stream.update("new_comment", partial: "comments/form", locals: { comment: Comment.new })
+            turbo_stream.update("new_comment", partial: "comments/form", locals: { comment: Comment.new }),
+            turbo_stream.prepend("comments", partial: "comments/comment", locals: { comment: @comment })
           ]
         end
         format.html { redirect_to comment_url(@comment), notice: "Comment was successfully created." }
