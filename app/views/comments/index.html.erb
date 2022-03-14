@@ -2,6 +2,10 @@
 
 <h1>Comments</h1>
 
+<div id="new_comment">
+  <%= render partial: "comments/form", locals: { comment: Comment.new } %>
+</div>
+
 <div id="comments">
   <% @comments.each do |comment| %>
     <%= render comment %>
