@@ -15,8 +15,9 @@
       <%= link_to "Account", user_path(current_user.id) %>
       <%= button_to "Log out", session_path(current_user.id), method: :delete %>
       <%= link_to "Cart", carts_path %>
-      <%= if current_user.is_admin? %>
+      <% if current_user.is_admin? %>
         <%= link_to "Admin products", admin_products_path %>
+        <%= link_to "Admin users", admin_users_path %>
       <% end %>
     <% else %>
       <%= link_to "Create account", new_user_path %>

@@ -33,22 +33,9 @@ class UsersController < ApplicationController
         end
     end
 
-    def index
-        @user = User.all
-    end
-
-    def destroy
-        @user = User.find(params[:id])
-        if @user.destroy
-            redirect_to users_path, notice: "An account has successfully deleted"
-        else
-            redirect_to users_path, notice: "An cccount is failed to delete"
-        end
-    end
-
     private
     def user_params
-        params.require(:user).permit(:name, :email, :password, :password_confirmation, :address, :phone, :is_admin)
+        params.require(:user).permit(:name, :email, :password, :password_confirmation, :address, :phone)
     end
 
 end
