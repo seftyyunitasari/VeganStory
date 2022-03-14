@@ -14,4 +14,9 @@
     <%= comment.content %>
   </p>
 
+  <p>
+    <%= link_to "Show this comment", comment %>
+    <%= button_to "Destroy this comment", comment, method: :delete %>
+  </p>
+
 </div>
