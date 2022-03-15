@@ -16,8 +16,11 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete(:user_id)
-    flash[:notice] = "You are successfully logged out"
-    redirect_to new_session_path
+    respond_to do |format|
+      if session.delete(:user_id)
+        format.turbo_stream { redirect_to new_session_path }
+      end
+    end
   end
+
 end

@@ -12,5 +12,6 @@ class Product < ApplicationRecord
 
   has_many :carts, dependent: :destroy
   has_many :cart_users, through: :carts, source: :user
-  
+
+  has_many :comments, dependent: :destroy
 end
