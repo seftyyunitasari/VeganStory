@@ -2,7 +2,7 @@
 
 <%= link_to "Add product", new_admin_product_path %>
 
-<% @product.each do |product| %>
+<% @products.each do |product| %>
     <p><%= link_to image_tag(product.image.url), admin_product_path(product.id) %></p>
     <p>Name: <%= product.name %></p>
     <p>Category: <%= product.category.name %></p>
