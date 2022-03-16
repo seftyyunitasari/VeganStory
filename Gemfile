@@ -16,9 +16,15 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem "carrierwave"
 gem "mini_magick"
+gem "rexml"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "rspec-rails"
+  gem "spring-commands-rspec"
+  gem "factory_bot_rails"
+  gem "faker"
+  gem "launchy"
 end
 
 group :development do
