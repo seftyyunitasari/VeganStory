@@ -4,7 +4,7 @@
 <p>Email: <%= @user.email %></p>
 <p>Address: <%= @user.address %></p>
 <p>Phone: <%= @user.phone %>
-<p>Admin: <%= @user.is_admin? %></p>
+
 <br/>
 <%= link_to "edit account", edit_user_path(@user.id) %>
 <% if @payment_info.present? %>
