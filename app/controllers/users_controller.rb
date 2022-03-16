@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
+            session[:user_id] = @user.id
             redirect_to user_path(@user.id), notice: "Account has successfully created"
         else
             flash.now[:danger] = "Account is failed to edit"
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
     def show
         @user = User.find(params[:id])
         @payment_info = PaymentInfo.find_by(user_id: current_user.id)
+        redirect_to tasks_path unless @user.id == current_user.id	
     end
 
     def edit
