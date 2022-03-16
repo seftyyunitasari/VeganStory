@@ -11,7 +11,7 @@ A web application designed to sell 100% vegan products.
 * Favourite function
 
 ## Implemented Technology outside The Curriculum
-* Vue.js
+* Ransack gem
 
 ## Execution Procedure
 ```
