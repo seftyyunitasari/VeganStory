@@ -14,3 +14,10 @@
 <% end %>
 <%= link_to "favourite list", favourites_path %>
 <%= link_to "Cart", carts_path %>
+
+<% if Order.find_by(user_id: @user.id).present? %>
+   <%= link_to "Order history", order_details_path %>
+<% else %>
+   <p> You don't have any order history <p>
+   <p> Click <%= link_to "here", products_path %> to start shopping </p>
+<% end %>
