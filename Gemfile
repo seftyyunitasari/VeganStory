@@ -17,6 +17,7 @@ gem "bootsnap", require: false
 gem "carrierwave"
 gem "mini_magick"
 gem "rexml"
+gem "ransack"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
