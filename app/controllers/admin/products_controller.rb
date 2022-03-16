@@ -9,9 +9,9 @@ class Admin::ProductsController < ApplicationController
     def create
         @product = Product.new(product_params)
         if @product.save
-            redirect_to admin_product_path(@product.id)
+            redirect_to admin_product_path(@product.id), notice: "Product was successfully added"
         else
-            flash.now[:danger] = "Product is failed to create"
+            flash.now[:danger] = "Product is failed to add"
             render :new
         end
     end

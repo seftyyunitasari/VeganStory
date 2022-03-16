@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
             total = total + cart.subtotal.to_i
         end
         @order.update(total: total)
-        redirect_to order_path(@order.id)
+        redirect_to order_path(@order.id), notice: "Order is successfully created"
     end
 
     def show
@@ -36,8 +36,10 @@ class OrdersController < ApplicationController
     def update
         @order = Order.find(params[:id])
         if @order.update(order_params)
+            flash[:notice] = "Shipping information is successfully edited"
             redirect_to order_path(@order)
         else
+            flash[:danger] = "Shipping information is failed to edit"
             render :edit
         end
     end
