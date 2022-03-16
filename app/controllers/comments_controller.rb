@@ -1,8 +1,10 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
+  
 
   # GET /comments or /comments.json
   def index
+    redirect_to root_path unless current_user.is_admin?
     @comments = Comment.order(created_at: :desc)
   end
 

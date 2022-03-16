@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
     skip_before_action :login_required, only: [:new, :create]
+    before_action :check_if_admin
 
     def show
         @user = User.find(params[:id])
@@ -41,5 +42,9 @@ class Admin::UsersController < ApplicationController
     private
     def user_params
         params.require(:user).permit(:name, :email, :password, :password_confirmation, :address, :phone, :is_admin)
+    end
+
+    def check_if_admin
+        redirect_to root_path unless current_user.is_admin?
     end
 end
