@@ -9,4 +9,9 @@
     <%= button_to "Remove from cart", cart_path(id: cart.id), method: :delete %>
 <% end %>
 
-<%= button_to "Checkout", orders_path, method: :post unless Cart.count == 0 %>
+<% if current_user.address.present? && PaymentInfo.find_by(user_id: current_user.id).present? %>
+    <%= button_to "Checkout", orders_path, method: :post unless Cart.count == 0 %>
+<% else %>
+   <p> Add address and payment information in your account information to checkout </p>
+   <%= link_to "Account", user_path(current_user.id) %>
+<% end %>

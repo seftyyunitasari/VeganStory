@@ -17,7 +17,7 @@
       <ul class="nav">
         <li class ="nav-item">
           <a class="nav-link active" href="<%= products_path %>">
-            <h3>VeganStory</h3>
+            <h5>VeganStory</h5>
           </a>
         </li>
         <% if logged_in? %>
@@ -29,6 +29,11 @@
           <li class="nav-item">
             <a class="nav-link active" href="<%= carts_path %>">
               <p>Cart<p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="<%= favourites_path %>">
+              <p>Favourite<p>
             </a>
           </li>
           <% if current_user.is_admin? %>

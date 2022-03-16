@@ -1,5 +1,9 @@
 <h3>Checkout Page</h3>
-<p> Shipping adress: <%= @order.shipping_address %> </p>
+
+<p> Shipping: </p>
+<p> Receiver name: <%= @order.receiver %>></p>
+<p> Address: <%= @order.shipping_address %> </p>
+<p> Phone number: <%= @order.phone %></p>
 <p> Payment Information: <%= @order.card_number %> </p>
 <p> Total: <%= @order.total %> </p>
 <%= link_to "edit order", edit_order_path(@order.id) %>

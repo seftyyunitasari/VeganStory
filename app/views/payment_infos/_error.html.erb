@@ -1,0 +1,10 @@
+<div class="error_explanation">
+    <% if @payment_info.errors.any? %>
+        <%= pluralize(@payment_info.errors.count, 'error') %>
+        <ul>
+            <% @payment_info.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    <% end %>
+</div>

@@ -1,14 +1,4 @@
 <h3>Payment information</h3>
-<%= form_with(model: @payment_info, local: true) do |f| %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.label :card_number %>
-    <%= f.text_field :card_number %>
-    <%= f.label :card_holder %>
-    <%= f.text_field :card_holder %>
-    <%= f.label :expiration_date %>
-    <%= f.text_field :expiration_date %>
-    <%= f.label :cvc %>
-    <%= f.text_field :cvc %>
-    <%= f.submit "Add payment information" %>
-<% end %>
 
+<%= render 'error' %>
+<%= render 'form' %>

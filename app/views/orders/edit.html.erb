@@ -1,4 +1,21 @@
+<h3>Edit order</h3>
+
+<div class="error_explanation">
+    <% if @order.errors.any? %>
+        <%= pluralize(@order.errors.count, 'error') %>
+        <ul>
+            <% @order.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    <% end %>
+</div>
+
 <%= form_with(model: @order, local: true) do |f| %>
+    <%= f.label :receiver %>
+    <%= f.text_field :receiver %>
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
     <%= f.label :shipping_address %>
     <%= f.text_area :shipping_address %>
     <%= f.label :card_number %>

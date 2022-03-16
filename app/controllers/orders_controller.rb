@@ -3,11 +3,20 @@ class OrdersController < ApplicationController
 
     def create
         @payment_info = PaymentInfo.find_by(user_id: current_user.id)
-        @order = Order.create(user_id: current_user.id, shipping_address: current_user.address, card_number: @payment_info.card_number, total: 0)
+        @order = Order.create(user_id: current_user.id,
+                                    shipping_address: current_user.address,
+                                    card_number: @payment_info.card_number,
+                                    total: 0,
+                                    phone: current_user.phone,
+                                    receiver: current_user.name)
         total = 0
         @carts = Cart.where(user_id: current_user.id)
         @carts.each do |cart|
-            order_info = OrderDetail.create(user_id: current_user.id, product_id: cart.id, quantity: cart.quantity, subtotal: cart.subtotal, order_id: @order.id)
+            order_info = OrderDetail.create(user_id: current_user.id,
+                                            product_id: cart.id,
+                                            quantity: cart.quantity,
+                                            subtotal: cart.subtotal,
+                                            order_id: @order.id)
             total = total + cart.subtotal.to_i
         end
         @order.update(total: total)
@@ -43,6 +52,6 @@ class OrdersController < ApplicationController
 
     private
     def order_params
-        params.require(:order).permit(:shipping_address, :card_number)
+        params.require(:order).permit(:shipping_address, :card_number, :receiver, :phone)
     end
 end

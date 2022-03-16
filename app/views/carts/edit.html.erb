@@ -1,4 +1,16 @@
 <%= form_with(model: @cart, local: true) do |f| %>
+
+    <div class="error_explanation">
+    <% if @cart.errors.any? %>
+        <%= pluralize(@cart.errors.count, 'error') %>
+        <ul>
+            <% @cart.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    <% end %>
+    </div>
+
     <%= f.label :quantity %>
     <%= f.text_field :quantity %>
     <%= f.submit "edit cart" %>

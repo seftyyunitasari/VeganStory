@@ -10,6 +10,7 @@ class UsersController < ApplicationController
         if @user.save
             redirect_to user_path(@user.id), notice: "Account has successfully created"
         else
+            flash.now[:danger] = "Account is failed to edit"
             render :new
         end
     end

@@ -68,10 +68,27 @@ payment_info9 = Comment.create(user_id: 9, card_holder: "Elizabeth Kepler", card
 payment_info10 = Comment.create(user_id: 10, card_holder: "Eric Clarke", card_number: "5178302798469412", expiration_date: "10/2025", cvc: "201")
 
 # Cart
-cart = Cart.create(product_id: 1, user_id: 1, quantity: 1, subtotal: 470)
-cart = Cart.create(product_id: 2, user_id: 2, quantity: 2, subtotal: 270)
-cart = Cart.create(product_id: 3, user_id: 3, quantity: 3, subtotal: 690)
-cart = Cart.create(product_id: 4, user_id: 4, quantity: 4, subtotal: 4680)
-cart = Cart.create(product_id: 5, user_id: 5, quantity: 5, subtotal: 2400)
+cart = Cart.create(product_id: 1, user_id: 1, quantity: 1, subtotal: Product.find(1).price*1)
+cart = Cart.create(product_id: 2, user_id: 2, quantity: 2, subtotal: Product.find(2).price*2)
+cart = Cart.create(product_id: 3, user_id: 3, quantity: 3, subtotal: Product.find(3).price*3)
+cart = Cart.create(product_id: 4, user_id: 4, quantity: 4, subtotal: Product.find(4).price*4)
+cart = Cart.create(product_id: 5, user_id: 5, quantity: 5, subtotal: Product.find(5).price*5)
 
 # Order
+order1 = Order.create(user_id: 1, total: Product.find(1).price*2 + Product.find(2).price*4, receiver: User.find(1).name, shipping_address: User.find(1).address, phone: User.find(1).phone)
+order1 = Order.create(user_id: 2, total: Product.find(3).price*6 + Product.find(4).price*7, receiver: User.find(2).name, shipping_address: User.find(2).address, phone: User.find(2).phone)
+order1 = Order.create(user_id: 3, total: Product.find(5).price*9 + Product.find(6).price*1, receiver: User.find(3).name, shipping_address: User.find(3).address, phone: User.find(3).phone)
+order1 = Order.create(user_id: 4, total: Product.find(7).price*3 + Product.find(8).price*5, receiver: User.find(4).name, shipping_address: User.find(4).address, phone: User.find(4).phone)
+order1 = Order.create(user_id: 5, total: Product.find(9).price*6 + Product.find(10).price*10, receiver: User.find(5).name, shipping_address: User.find(5).address, phone: User.find(5).phone)
+
+# OrderDetail
+order_detail1 = OrderDetail.create(product_id: 1, user_id: 1, order_id: 1, quantity: 2, subtotal: Product.find(1).price*2)
+order_detail1 = OrderDetail.create(product_id: 2, user_id: 1, order_id: 1, quantity: 4, subtotal: Product.find(2).price*4)
+order_detail1 = OrderDetail.create(product_id: 3, user_id: 2, order_id: 2, quantity: 6, subtotal: Product.find(3).price*6)
+order_detail1 = OrderDetail.create(product_id: 4, user_id: 2, order_id: 2, quantity: 7, subtotal: Product.find(4).price*7)
+order_detail1 = OrderDetail.create(product_id: 5, user_id: 3, order_id: 3, quantity: 9, subtotal: Product.find(5).price*9)
+order_detail1 = OrderDetail.create(product_id: 6, user_id: 3, order_id: 3, quantity: 1, subtotal: Product.find(6).price*1)
+order_detail1 = OrderDetail.create(product_id: 7, user_id: 4, order_id: 1, quantity: 3, subtotal: Product.find(7).price*3)
+order_detail1 = OrderDetail.create(product_id: 8, user_id: 4, order_id: 1, quantity: 5, subtotal: Product.find(8).price*5)
+order_detail1 = OrderDetail.create(product_id: 9, user_id: 5, order_id: 2, quantity: 6, subtotal: Product.find(9).price*6)
+order_detail1 = OrderDetail.create(product_id: 10, user_id: 5, order_id: 2, quantity: 10, subtotal: Product.find(10).price*10)
