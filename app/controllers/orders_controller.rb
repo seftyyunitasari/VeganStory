@@ -48,6 +48,7 @@ class OrdersController < ApplicationController
             cart.destroy
         end
         @order = Order.find(params[:id])
+        @order_details = OrderDetail.where(order_id: params[:id])
     end
 
     private

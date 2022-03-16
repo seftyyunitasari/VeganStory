@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :comments
   root to: "products#index"
+  resources :comments
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show, :edit, :update]
   resources :products, only: [:new, :create, :index, :show, :edit, :update, :destroy]
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :products, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     resources :users, only: [:show, :edit, :update, :index, :destroy]
+    resources :order_details, only: [:index]
   end
   resources :order_details, only: [:index]
 end

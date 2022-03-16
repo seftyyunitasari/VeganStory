@@ -1,0 +1,14 @@
+<h1>Order History</h1>
+
+<% @orders.each do |order| %>
+    <strong>Order number: <%= order.id %> </strong>
+    <p> Oder date: <%= order.created_at %> </p>
+    <p> User name: <%= order.user.name %>
+    <% @order_details.each do |order_detail| %>
+        <% product = Product.find(order_detail.product_id) %>
+        <p><%= link_to image_tag(product.image.url), product_path(product.id) %></p>
+        <p>Name: <%= product.name %></p>
+        <p>Quantity: <%= order_detail.quantity %></p>
+        <p>Subtotal: <%= order_detail.subtotal %></p>
+    <% end %>
+<% end %>

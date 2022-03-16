@@ -2,3 +2,18 @@
 
 <p> Thank you for shopping </p>
 <p> Order number: <%= @order.id %> </p>
+<p> Shipping address: </p>
+<p> <%= @order.receiver %> </p>
+<p> <%= @order.shipping_address %> </p>
+<p> <%= @order.phone %> </p>
+
+<p> Total: <%= @order.total %> </p>
+
+<% @order_details.each do |order_detail| %>
+    <% product = Product.find(order_detail.product_id) %>
+    <p><%= link_to image_tag(product.image.url), product_path(product.id) %></p>
+    <p>Name: <%= product.name %></p>
+    <p>Quantity: <%= order_detail.quantity %></p>
+    <p>Subtotal: <%= order_detail.subtotal %></p>
+<% end %>
+

@@ -6,5 +6,5 @@
 <p> Phone number: <%= @order.phone %></p>
 <p> Payment Information: <%= @order.card_number %> </p>
 <p> Total: <%= @order.total %> </p>
-<%= link_to "edit order", edit_order_path(@order.id) %>
+<%= link_to "edit shipping address", edit_order_path(@order.id) %>
 <%= link_to "place oder", complete_order_path(@order.id) %>
