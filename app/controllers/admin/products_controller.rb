@@ -54,7 +54,7 @@ class Admin::ProductsController < ApplicationController
 
     private
     def product_params
-        params.require(:product).permit(:category_id, :name, :price, :stock, :description, :image, :image_chache)
+        params.require(:product).permit(:category_id, :name, :price, :stock, :description, :image, :image_cache)
     end
 
     def check_if_admin
