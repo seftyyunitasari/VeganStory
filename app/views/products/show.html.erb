@@ -7,16 +7,20 @@
 <p>Stock: <%= @product.stock %></p>
 <p>Description:  <%= @product.description %></p>
 
+<% if @product.stock == 0 %>
+  <strong>Out of stock!</strong>
+<% else %>
+  <% if @cart.present? %>
+    <%= button_to "Remove from cart", cart_path(id: @cart.id), method: :delete %>
+  <% else %>
+    <%= button_to "Add to cart", carts_path(product_id: @product.id), method: :post %>
+  <% end %>
+<% end %>
+
 <% if @favourite.present? %>
     <%= button_to "Remove from favourite", favourite_path(id: @favourite.id), method: :delete %>
 <% else %>
     <%= button_to "Add to favourite", favourites_path(product_id: @product.id), method: :post %>
-<% end %>
-
-<% if @cart.present? %>
-    <%= button_to "Remove from cart", cart_path(id: @cart.id), method: :delete %>
-<% else %>
-    <%= button_to "Add to cart", carts_path(product_id: @product.id), method: :post %>
 <% end %>
 
 <div id="new_comment">

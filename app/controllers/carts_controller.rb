@@ -4,7 +4,7 @@ class CartsController < ApplicationController
   def create
     @product = Product.find(params[:product_id])
     cart = current_user.carts.create(product_id: @product.id, quantity: "1", subtotal: @product.price)
-    redirect_to product_path(@product.id), notice: "Product has been added to cart"
+    redirect_to products_path, notice: "Product has been added to cart"
   end
 
   def index

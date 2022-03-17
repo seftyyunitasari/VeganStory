@@ -9,4 +9,16 @@
     <p>Price: <%= product.price %></p>
     <p>Stock: <%= product.stock %></p>
     <p>Description:  <%= product.description %></p>
+    <% if product.stock == 0 %>
+        <strong>Out of stock! </strong>
+    <% else %>
+        <% if logged_in? %>
+            <% @cart = current_user.carts.find_by(product_id: product.id) %>
+            <% if @cart.present? %>
+                <%= button_to "Remove from cart", cart_path(id: @cart.id), method: :delete %>
+            <% else %>
+                <%= button_to "Add to cart", carts_path(product_id: product.id), method: :post %>
+            <% end %>
+        <% end %>
+    <% end %>
 <% end %>

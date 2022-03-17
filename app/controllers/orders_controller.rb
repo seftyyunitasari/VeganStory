@@ -2,7 +2,10 @@ class OrdersController < ApplicationController
     skip_before_action :login_required, only: [:create]
 
     def create
+        # Payment Info
         @payment_info = PaymentInfo.find_by(user_id: current_user.id)
+
+        # Create order (total is still zero)
         @order = Order.create(user_id: current_user.id,
                                     shipping_address: current_user.address,
                                     card_number: @payment_info.card_number,
@@ -10,16 +13,28 @@ class OrdersController < ApplicationController
                                     phone: current_user.phone,
                                     receiver: current_user.name)
         total = 0
+
+        # Carts -> transfer products and quantity information to OrderDetail
         @carts = Cart.where(user_id: current_user.id)
+
         @carts.each do |cart|
             order_info = OrderDetail.create(user_id: current_user.id,
-                                            product_id: cart.id,
+                                            product_id: cart.product_id,
                                             quantity: cart.quantity,
                                             subtotal: cart.subtotal,
                                             order_id: @order.id)
             total = total + cart.subtotal.to_i
+
+            # Update Stock
+            @product = Product.find(id: cart.product_id)
+
+            stock = @product.stock - cart.quantity
+            @product.update(stock: stock)
         end
+
+        # Update total in Order
         @order.update(total: total)
+        
         redirect_to order_path(@order.id), notice: "Order is successfully created"
     end
 
