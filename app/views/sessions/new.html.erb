@@ -5,17 +5,15 @@
         <section class="col-12 col-sm-6 col-md-3">
             <%= form_with(scope: :session, url: sessions_path, local: true, class: "form-container") do |f| %>
                 <div class="mb-3">
-                    <label for="email_address" class="form-label">Email address</label>
                     <%= f.email_field :email, class: "form-control", placeholder: "Input email" %>
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
                     <%= f.password_field :password, class: "form-control", placeholder: "Input password" %>
                 </div>
                 <div class="d-grid gap-2">
                      <%= f.submit "Log in", class: "btn btn-primary" %>
                 </div>
-                <div class="form-text">Already have an account? <a href="<%= new_session_path %>">Log In</a></div>
+                <div class="form-text">Don't have an account? <a href="<%= new_user_path %>">Create account</a></div>
             <% end %>
         </section>
     </section>

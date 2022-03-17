@@ -11,13 +11,31 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+
   </head>
   <body>
-    <div class="header">
+
+  <nav>
+    <label class="logo">
+      <a class="nav-link active" href="<%= products_path %>"><strong>VeganStory</strong></a>
+    </label>
+    <ul>
+      <li>
+        <a class="nav-link active" href="<%= products_path %>">Products</a>
+      </li>
+    </ul>
+  </nav>
+
+
+
+
+    <div class="header justify-content-center">
       <ul class="nav">
         <li class ="nav-item">
           <a class="nav-link active" href="<%= products_path %>">
-            <h5>VeganStory</h5>
+            <strong>VeganStory</strong>
           </a>
         </li>
         <li class ="nav-item">
