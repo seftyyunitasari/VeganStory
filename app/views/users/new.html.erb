@@ -1,8 +1,6 @@
-<link rel="stylesheet" type="text/css" href="/stylesheets/create_account.css">
-
 <section class="container-fluid bg">
     <section class="row justify-content-center">
-        <section class="col-12 col-sm-6 col-md-3">
+        <section class="col-6 justify-content-center">
             <%= form_with(scope: :session, url: sessions_path, local: true, class: "form-container") do |f| %>
                 <div class="error_explanation">
                     <% if @user.errors.any? %>
@@ -40,3 +38,5 @@
         </section>
     </section>
 </section>
+<br/>
+<br/>

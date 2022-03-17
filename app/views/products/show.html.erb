@@ -1,30 +1,48 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/show_product.css">
+
 <h3>Product detail</h3>
+<section class="container-fluid">
+    <section class="row">
+        <section class="box">
+                <div class="product-container">
+                    <div class="image-container justify-content-center">
+                        <p><%= link_to image_tag(@product.image.url), product_path(@product.id) %></p>
+                    </div>
+                    <div class="product-info">
+                        <strong><%= @product.name %></strong>
+                        <p>Category: <%= @product.category.name %></p>
+                        <p>Price: <%= @product.price %></p>
+                        <p>Stock: <%= @product.stock %></p>
+                    </div>
+                    <div class="product-desc">
+                        <p>Description:  <%= @product.description %></p>
+                    </div>
+                    <div class="links">
+                        <% if @product.stock == 0 %>
+                            <strong>Out of stock! </strong>
+                        <% else %>
+                          <% if @cart.present? %>
+                            <%= button_to "Remove from cart", cart_path(id: @cart.id), method: :delete %>
+                          <% else %>
+                            <%= button_to "Add to cart", carts_path(product_id: @product.id), method: :post %>
+                          <% end %>
+                        <% end %>
 
-<p><%= image_tag @product.image.url %></p>
-<p>Name: <%= @product.name %></p>
-<p>Category: <%= @product.category.name %></p>
-<p>Price: <%= @product.price %></p>
-<p>Stock: <%= @product.stock %></p>
-<p>Description:  <%= @product.description %></p>
+                        <% if @favourite.present? %>
+                          <%= button_to "Remove from favourite", favourite_path(id: @favourite.id), method: :delete %>
+                        <% else %>
+                          <%= button_to "Add to favourite", favourites_path(product_id: @product.id), method: :post %>
+                        <% end %>
+                    </div>
+                </div>
+        </section>
+    </section>
+</section>
 
-<% if @product.stock == 0 %>
-  <strong>Out of stock!</strong>
-<% else %>
-  <% if @cart.present? %>
-    <%= button_to "Remove from cart", cart_path(id: @cart.id), method: :delete %>
-  <% else %>
-    <%= button_to "Add to cart", carts_path(product_id: @product.id), method: :post %>
-  <% end %>
-<% end %>
-
-<% if @favourite.present? %>
-    <%= button_to "Remove from favourite", favourite_path(id: @favourite.id), method: :delete %>
-<% else %>
-    <%= button_to "Add to favourite", favourites_path(product_id: @product.id), method: :post %>
-<% end %>
-
-<div id="new_comment">
-  <%= render partial: "comments/form", locals: { comment: Comment.new } %>
+<div class="comment">
+  <div id="new_comment">
+    <%= render partial: "comments/form", locals: { comment: Comment.new } %>
+  </div>
 </div>
 
 <div id="comments">
