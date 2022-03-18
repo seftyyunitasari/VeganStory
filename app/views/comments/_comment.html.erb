@@ -9,7 +9,7 @@
   </p>
 
   <p>
-    <%= link_to "Show this comment", comment %>
+    <%= link_to "Show this comment on product page", product_path(comment.product_id) %>
     <%= button_to "Destroy this comment", comment, method: :delete %>
   </p>
 
