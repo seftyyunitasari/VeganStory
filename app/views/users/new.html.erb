@@ -1,7 +1,7 @@
 <section class="container-fluid bg">
     <section class="row justify-content-center">
         <section class="col-6 justify-content-center">
-            <%= form_with(scope: :session, url: sessions_path, local: true, class: "form-container") do |f| %>
+            <%= form_with(model: @user, local: true, class: "form-container") do |f| %>
                 <div class="error_explanation">
                     <% if @user.errors.any? %>
                         <%= pluralize(@user.errors.count, 'error') %>

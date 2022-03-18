@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
             total = total + cart.subtotal.to_i
 
             # Update Stock
-            @product = Product.find(id: cart.product_id)
+            @product = Product.find_by(id: cart.product_id)
 
             stock = @product.stock - cart.quantity
             @product.update(stock: stock)
