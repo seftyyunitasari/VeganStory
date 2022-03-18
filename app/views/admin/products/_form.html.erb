@@ -9,7 +9,7 @@
     <% end %>
 </div>
 
-<%= form_with(model: [:admin, @product], local: true) do |f| %>
+<%= form_with(model: [:admin, @product], local: true, class: "justify-content-center") do |f| %>
     <%= f.text_field :category_id, placeholder: "category: enter 1 for vegetables & 2 for fruits" %>
     <%= f.text_field :name, placeholder: "name" %>
     <%= f.text_field :price, placeholder: "price" %>
